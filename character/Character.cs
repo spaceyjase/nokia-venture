@@ -12,7 +12,7 @@ public class Character : Area2D
   private AnimationPlayer AnimationPlayer => GetNode<AnimationPlayer>("AnimationPlayer");
   private Tween MoveTween => GetNode<Tween>("MoveTween");
 
-  protected Dictionary<Facing, Vector2> moves = new Dictionary<Facing,Vector2>
+  protected readonly Dictionary<Facing, Vector2> moves = new Dictionary<Facing,Vector2>
   {
     { Facing.Right, new Vector2(1, 0) },
     { Facing.Left, new Vector2(-1, 0) },
