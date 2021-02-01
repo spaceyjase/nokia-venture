@@ -2,10 +2,10 @@ using Godot;
 
 public class Player : Character
 {
-  [Signal] delegate void Dead();
-  [Signal] delegate void Switch();
-  [Signal] delegate void Win();
-  [Signal] delegate void Moved();
+  [Signal] public delegate void Dead();
+  [Signal] public delegate void Switch();
+  [Signal] public delegate void Win();
+  [Signal] public delegate void Moved();
 
   public override void _Process(float delta)
   {

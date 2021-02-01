@@ -7,7 +7,7 @@ public class Character : Area2D
 
   private int tileSize = 8;
   protected bool canMove = true;
-  private Facing facing = Facing.Right;
+  protected Facing facing = Facing.Right;
 
   private AnimationPlayer AnimationPlayer => GetNode<AnimationPlayer>("AnimationPlayer");
   private Tween MoveTween => GetNode<Tween>("MoveTween");
