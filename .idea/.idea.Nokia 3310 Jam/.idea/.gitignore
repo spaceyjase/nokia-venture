@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Nokia 3310 Jam.iml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\J\Documents\godot\nokia-3310 template\.idea\.idea.Nokia 3310 Jam\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
