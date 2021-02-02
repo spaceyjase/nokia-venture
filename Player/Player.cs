@@ -31,8 +31,9 @@ public class Player : Character
         var tileId = tileMap.GetCellv(tilePosition);
         var tileName = tileMap.TileSet.TileGetName(tileId);
         
+        if (tileName != "gate") continue;
         if (!HasKey) continue;
-        
+
         Keys--;
         tileMap.SetCellv(tilePosition, -1);
       }
