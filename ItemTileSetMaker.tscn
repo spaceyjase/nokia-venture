@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/items.png" type="Texture" id=1]
+
+[node name="ItemTileSetMaker" type="Node2D"]
+
+[node name="key" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="chest" type="Sprite" parent="."]
+position = Vector2( 8, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 8, 0, 8, 8 )
+
+[node name="sack" type="Sprite" parent="."]
+position = Vector2( 16, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 8, 8 )
+
+[node name="flask" type="Sprite" parent="."]
+position = Vector2( 24, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 0, 8, 8 )
+
+[node name="potion" type="Sprite" parent="."]
+position = Vector2( 32, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 8, 8 )
+
+[node name="tea" type="Sprite" parent="."]
+position = Vector2( 40, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 40, 0, 8, 8 )

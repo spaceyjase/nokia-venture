@@ -21,6 +21,7 @@ tile_data = PoolIntArray( 65540, 11, 0, 65541, 21, 0, 65542, 3, 0, 65543, 21, 0,
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 8, 8 )
 format = 1
+tile_data = PoolIntArray( 131078, 19, 0, 262150, 22, 0 )
 
 [node name="Player" parent="." groups=[
 "player",
