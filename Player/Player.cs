@@ -22,4 +22,21 @@ public class Player : Character
       }
     }
   }
+
+  private void _on_Player_area_entered(Area2D area)
+  {
+    if (area.IsInGroup("enemies"))
+    {
+      GD.Print("Enemy");
+    }
+    if (area is Pickup pickup)
+    {
+      pickup.DoPickup();
+      if (pickup.Type == "key") // TODO: revisit
+      {
+        GD.Print("Pickup up key!");
+      }
+      // TODO: implementation for other pickups
+    }
+  }
 }

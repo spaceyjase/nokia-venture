@@ -23,7 +23,8 @@ public class Map : Node2D
 
     GD.Randomize();
     Items.Hide();
-    SetCameraLimits();
+    
+    //SetCameraLimits();
 
     var gateId = Walls.TileSet.FindTileByName("gate");
     foreach (var cell in Walls.GetUsedCellsById(gateId))
@@ -43,15 +44,16 @@ public class Map : Node2D
     {
       { nameof(Player), nameof(Player) },
       { nameof(Slime), "Enemy" },
-      { "Key", nameof(Pickup) },
-      //{ nameof(Chest), "Pickup" },
+      { "key", nameof(Pickup) },
+      { "chest", nameof(Pickup) },
     };
+    
     foreach (Vector2 cell in Items.GetUsedCells())
     {
       var id = Items.GetCellv(cell);
       var cellType = Items.TileSet.TileGetName(id);
       var position = Items.MapToWorld(cell) + Items.CellSize / 2;
-      var type = lookup[cellType];
+      if (!lookup.TryGetValue(cellType, out var type)) continue;
       switch (type)
       {
         case nameof(Player):
@@ -63,7 +65,7 @@ public class Map : Node2D
           if (pickup != null)
           {
             var p = pickup.Instance() as Pickup;
-            p.Init(type, position);
+            p.Init(cellType, position);
             AddChild(p);
           }
           break;

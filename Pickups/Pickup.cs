@@ -6,13 +6,15 @@ public class Pickup : Area2D
 {
   private readonly Dictionary<string, int> textureIndex = new Dictionary<string, int>
   {
-    {"Key", 0},
-    {"Chest", 1},
+    { "key", 0 },
+    { "chest", 1 },
   };
 
   private Tween Tween => GetNode<Tween>("Tween");
   private Sprite Sprite => GetNode<Sprite>("Sprite");
   private CollisionShape2D CollisionShape2D => GetNode<CollisionShape2D>("CollisionShape2D");
+
+  public string Type { get; set; }
 
   public override void _Ready()
   {
@@ -29,6 +31,7 @@ public class Pickup : Area2D
   {
     Sprite.Frame = textureIndex[type];
     Position = position;
+    Type = type;
   }
 
   public void DoPickup()
