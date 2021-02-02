@@ -14,7 +14,7 @@ public class Pickup : Area2D
   private Sprite Sprite => GetNode<Sprite>("Sprite");
   private CollisionShape2D CollisionShape2D => GetNode<CollisionShape2D>("CollisionShape2D");
 
-  public string Type { get; set; }
+  public string Type { get; private set; }
 
   public override void _Ready()
   {

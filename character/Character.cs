@@ -20,7 +20,7 @@ public class Character : Area2D
     { Facing.Down, new Vector2(0, 1) }
   };
 
-  private Dictionary<Facing, RayCast2D> raycasts;
+  protected Dictionary<Facing, RayCast2D> raycasts;
 
   public override void _Ready()
   {
