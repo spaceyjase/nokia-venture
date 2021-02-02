@@ -43,7 +43,7 @@ public class Map : Node2D
     {
       { nameof(Player), nameof(Player) },
       { nameof(Slime), "Enemy" },
-      //{ nameof(Key), "Pickup" },
+      { "Key", nameof(Pickup) },
       //{ nameof(Chest), "Pickup" },
     };
     foreach (Vector2 cell in Items.GetUsedCells())
@@ -58,12 +58,21 @@ public class Map : Node2D
           Player.Position = position;
           Player.TileSize = (int)Items.CellSize.x;
           break;
+        case nameof(Pickup):
+          var pickup = ResourceLoader.Load<PackedScene>($"res://Pickups/Pickup.tscn");
+          if (pickup != null)
+          {
+            var p = pickup.Instance() as Pickup;
+            p.Init(type, position);
+            AddChild(p);
+          }
+          break;
         case "Enemy": // TODO: game constants
           // TODO: global/singleton factory method
-          var scene = ResourceLoader.Load<PackedScene>($"res://Enemies/{type}.tscn");
-          if (scene != null)
+          var enemy = ResourceLoader.Load<PackedScene>($"res://Enemies/{type}.tscn");
+          if (enemy != null)
           {
-            var c = scene.Instance() as Character;
+            var c = enemy.Instance() as Character;
             c.Position = position;
             c.TileSize = (int)Items.CellSize.x;
             AddChild(c);
