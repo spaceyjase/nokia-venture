@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/Dungeon.tres" type="TileSet" id=2]
+[ext_resource path="res://levels/Map.cs" type="Script" id=3]
 
 [node name="Map" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -21,9 +23,9 @@ tile_data = PoolIntArray( 65540, 11, 0, 65541, 21, 0, 65542, 3, 0, 65543, 21, 0,
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 8, 8 )
 format = 1
-tile_data = PoolIntArray( 131078, 19, 0, 262150, 22, 0 )
+tile_data = PoolIntArray( 131078, 19, 0, 262150, 22, 0, 393222, 28, 0 )
 
 [node name="Player" parent="." groups=[
 "player",
 ] instance=ExtResource( 1 )]
-position = Vector2( 52, 52 )
+position = Vector2( 32, 52 )

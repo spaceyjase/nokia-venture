@@ -3,7 +3,6 @@ using Godot;
 public class Player : Character
 {
   [Signal] public delegate void Dead();
-  [Signal] public delegate void Switch();
   [Signal] public delegate void Win();
   [Signal] public delegate void Moved();
 

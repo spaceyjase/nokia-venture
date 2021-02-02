@@ -5,7 +5,7 @@ public class Character : Area2D
 {
   [Export] private int speed = 1;
 
-  private int tileSize = 8;
+  public int TileSize { get; set; } = 8;
   protected bool canMove = true;
   protected Facing facing = Facing.Right;
 
@@ -44,7 +44,7 @@ public class Character : Area2D
 
     canMove = false;
     MoveTween.InterpolateProperty(this, "position", Position,
-      Position + moves[facing] * tileSize, 1f / speed,
+      Position + moves[facing] * TileSize, 1f / speed,
       Tween.TransitionType.Sine);
     MoveTween.Start();
 
