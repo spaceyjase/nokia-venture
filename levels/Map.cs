@@ -101,6 +101,16 @@ public class Map : Node2D
   
   private void OnPlayerWin()
   {
+    GD.Print("Play has reached the exit!");
+  }
+
+  private void OnPlayerMoved(Vector2 position)
+  {
+    // TODO: is the player on the exit tile now?
+    var tilePosition = Ground.WorldToMap(position);
+    var tileId = Ground.GetCellv(tilePosition);
+    var tileName = Ground.TileSet.TileGetName(tileId);
+    GD.Print(tileName);
   }
 }
 

@@ -48,6 +48,11 @@ public class Player : Character
       GD.Print("Enemy");
     }
 
+    if (area.Name == "Exit")
+    {
+      EmitSignal(nameof(Win));
+    }
+
     if (!(area is Pickup pickup)) return;
 
     pickup.DoPickup();

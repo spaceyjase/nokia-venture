@@ -7,7 +7,7 @@ public class Pickup : Area2D
   private readonly Dictionary<string, int> textureIndex = new Dictionary<string, int>
   {
     { "key", 0 },
-    { "chest", 1 },
+    { "chest", 1 }
   };
 
   private Tween Tween => GetNode<Tween>("Tween");
