@@ -10,8 +10,8 @@ public class HUD : CanvasLayer
     KeyLabel.Text = $"Key: {Global.Keys}";
   }
   
-  public void UpdateHealth(int health)
+  public void UpdateHealth()
   {
-    HealthLabel.Text = $"Life: {health}";
+    HealthLabel.Text = $"Life: {Global.Life}";
   }
 }

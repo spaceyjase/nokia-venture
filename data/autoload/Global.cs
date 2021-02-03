@@ -5,8 +5,8 @@ using System.Diagnostics;
 
 public class Global : Node
 {
-  [Signal]
-  public delegate void KeysChanged();
+  [Signal] public delegate void KeysChanged();
+  [Signal] public delegate void LifeChanged();
   
   public static Global Instance { get; private set; }
 
@@ -24,6 +24,7 @@ public class Global : Node
   
   private static int keys;
   private static int currentLevel;
+  private static int life;
 
   public static int Keys
   {
@@ -34,11 +35,22 @@ public class Global : Node
       Instance.EmitSignal(nameof(KeysChanged));
     }
   }
+  
+  public static int Life
+  {
+    get => life;
+    set
+    {
+      keys = value;
+      Instance.EmitSignal(nameof(LifeChanged));
+    }
+  }
 
   public static void NewGame()
   {
     keys = 0;
     currentLevel = -1;
+    life = 10;  // TODO: game stats/config
     
     NextLevel();
   }

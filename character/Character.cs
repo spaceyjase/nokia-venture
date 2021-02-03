@@ -4,7 +4,7 @@ using Godot.Collections;
 public class Character : Area2D
 {
   [field: Export] protected internal int Damage { get; } = 1;
-  [Export] private int health = 1;
+  [Export] protected int health = 1;
   [Export] private int speed = 1;
 
   public int TileSize { get; set; } = 8;

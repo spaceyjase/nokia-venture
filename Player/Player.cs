@@ -6,6 +6,13 @@ public class Player : Character
   [Signal] public delegate void Win();
   [Signal] public delegate void Moved();
 
+  public override void _Ready()
+  {
+    base._Ready();
+
+    health = Global.Life;
+  }
+
   public override void _Process(float delta)
   {
     base._Process(delta);
@@ -48,6 +55,7 @@ public class Player : Character
       var enemy = area as Character;
       enemy.TakeDamage(Damage);
       TakeDamage(enemy.Damage);
+      Global.Life = health;
     }
 
     if (area.Name == "Exit")

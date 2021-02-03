@@ -1,19 +1,15 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 
 public class Map : Node2D
 {
-  private TileMap Ground => GetNode<TileMap>("Ground");
   private TileMap Walls => GetNode<TileMap>("Walls");
   private TileMap Items => GetNode<TileMap>("Items");
   
   private Player Player => GetNode<Player>("Player");
   private HUD HUD => GetNode<HUD>("HUD");
 
-  private List<object> gates = new List<object>();
+  private readonly List<object> gates = new List<object>();
   
   public override void _Ready()
   {
@@ -29,10 +25,14 @@ public class Map : Node2D
     }
 
     SpawnItems();
+    
     Player.Connect(nameof(Player.Dead), this, nameof(OnGameOver));
     Player.Connect(nameof(Player.Win), this, nameof(OnPlayerWin));
+    Global.Instance.Connect(nameof(Global.LifeChanged), this, nameof(HUD.UpdateHealth));
     Global.Instance.Connect(nameof(Global.KeysChanged), HUD, nameof(HUD.UpdateKeys));
+    
     HUD.UpdateKeys();
+    HUD.UpdateHealth();
   }
 
   private void SpawnItems()
@@ -63,9 +63,11 @@ public class Map : Node2D
           var pickup = ResourceLoader.Load<PackedScene>($"res://Pickups/Pickup.tscn");
           if (pickup != null)
           {
-            var p = pickup.Instance() as Pickup;
-            p.Init(cellType, position);
-            AddChild(p);
+            if (pickup.Instance() is Pickup p)
+            {
+              p.Init(cellType, position);
+              AddChild(p);
+            }
           }
           break;
         case "Enemy": // TODO: game constants
