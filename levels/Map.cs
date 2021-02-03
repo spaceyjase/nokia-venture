@@ -28,7 +28,7 @@ public class Map : Node2D
     
     Player.Connect(nameof(Player.Dead), this, nameof(OnGameOver));
     Player.Connect(nameof(Player.Win), this, nameof(OnPlayerWin));
-    Global.Instance.Connect(nameof(Global.LifeChanged), this, nameof(HUD.UpdateHealth));
+    Global.Instance.Connect(nameof(Global.LifeChanged), HUD, nameof(HUD.UpdateHealth));
     Global.Instance.Connect(nameof(Global.KeysChanged), HUD, nameof(HUD.UpdateKeys));
     
     HUD.UpdateKeys();
