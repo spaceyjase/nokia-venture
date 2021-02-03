@@ -61,13 +61,10 @@ public class Map : Node2D
           break;
         case nameof(Pickup):
           var pickup = ResourceLoader.Load<PackedScene>($"res://Pickups/Pickup.tscn");
-          if (pickup != null)
+          if (pickup?.Instance() is Pickup p)
           {
-            if (pickup.Instance() is Pickup p)
-            {
-              p.Init(cellType, position);
-              AddChild(p);
-            }
+            p.Init(cellType, position);
+            AddChild(p);
           }
           break;
         case "Enemy": // TODO: game constants
