@@ -52,6 +52,7 @@ public class Player : Character
 
     if (area.Name == "Exit")
     {
+      // TODO: wait a sec before emitting signal to allow transition (tween?)
       EmitSignal(nameof(Win));
     }
 

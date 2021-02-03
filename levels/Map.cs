@@ -12,7 +12,6 @@ public class Map : Node2D
   
   private Player Player => GetNode<Player>("Player");
   private HUD HUD => GetNode<HUD>("HUD");
-  private Camera2D Camera => GetNode<Camera2D>("Player/Camera2D");
 
   private List<object> gates = new List<object>();
   
@@ -82,16 +81,6 @@ public class Map : Node2D
           break;
       }
     }
-  }
-
-  private void SetCameraLimits()
-  {
-    var mapSize = Ground.GetUsedRect();
-    var cellSize = Ground.CellSize;
-    Camera.LimitLeft = (int)mapSize.Position.x * (int)cellSize.x;
-    Camera.LimitTop = (int)mapSize.Position.y * (int)cellSize.y;
-    Camera.LimitRight = (int)mapSize.End.x * (int)cellSize.x;
-    Camera.LimitBottom = (int)mapSize.End.y * (int)cellSize.y;
   }
 
   private void OnGameOver()
