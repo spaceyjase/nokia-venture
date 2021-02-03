@@ -34,7 +34,7 @@ public class Player : Character
         if (tileName != "gate") continue;
         if (!HasKey) continue;
 
-        Keys--;
+        Global.Keys--;
         tileMap.SetCellv(tilePosition, -1);
       }
     }
@@ -61,13 +61,12 @@ public class Player : Character
     GD.Print($"Pickup up {pickup.Type}!"); // TODO: revisit
     if (pickup.Type == "key")
     {
-      Keys++;
+      Global.Keys++;
     }
     // TODO: implementation for other pickups
   }
 
-  private int Keys { get; set; }
-  private bool HasKey => Keys > 0;
+  private bool HasKey => Global.Keys > 0;
 
   protected override void Die()
   {

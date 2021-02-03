@@ -11,6 +11,7 @@ public class Map : Node2D
   private TileMap Items => GetNode<TileMap>("Items");
   
   private Player Player => GetNode<Player>("Player");
+  private HUD HUD => GetNode<HUD>("HUD");
   private Camera2D Camera => GetNode<Camera2D>("Player/Camera2D");
 
   private List<object> gates = new List<object>();
@@ -22,8 +23,6 @@ public class Map : Node2D
     GD.Randomize();
     Items.Hide();
     
-    //SetCameraLimits();
-
     var gateId = Walls.TileSet.FindTileByName("gate");
     foreach (var cell in Walls.GetUsedCellsById(gateId))
     {
@@ -33,6 +32,8 @@ public class Map : Node2D
     SpawnItems();
     Player.Connect(nameof(Player.Dead), this, nameof(OnGameOver));
     Player.Connect(nameof(Player.Win), this, nameof(OnPlayerWin));
+    Global.Instance.Connect(nameof(Global.KeysChanged), HUD, nameof(HUD.UpdateKeys));
+    HUD.UpdateKeys();
   }
 
   private void SpawnItems()

@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 [autoload]
 
 AudioManager="*res://data/autoload/AudioManager.gd"
+Global="*res://data/autoload/Global.cs"
 
 [debug]
 
