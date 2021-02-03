@@ -41,7 +41,7 @@ public class Global : Node
     get => life;
     set
     {
-      keys = value;
+      life = value;
       Instance.EmitSignal(nameof(LifeChanged));
     }
   }
