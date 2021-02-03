@@ -6,8 +6,6 @@ using System.Runtime.Serialization;
 
 public class Map : Node2D
 {
-  [Export] private PackedScene pickup;
-
   private TileMap Ground => GetNode<TileMap>("Ground");
   private TileMap Walls => GetNode<TileMap>("Walls");
   private TileMap Items => GetNode<TileMap>("Items");
@@ -72,7 +70,7 @@ public class Map : Node2D
           break;
         case "Enemy": // TODO: game constants
           // TODO: global/singleton factory method
-          var enemy = ResourceLoader.Load<PackedScene>($"res://Enemies/{type}.tscn");
+          var enemy = ResourceLoader.Load<PackedScene>($"res://Enemies/{cellType}.tscn");
           if (enemy != null)
           {
             var c = enemy.Instance() as Character;
@@ -102,15 +100,6 @@ public class Map : Node2D
   private void OnPlayerWin()
   {
     GD.Print("Play has reached the exit!");
-  }
-
-  private void OnPlayerMoved(Vector2 position)
-  {
-    // TODO: is the player on the exit tile now?
-    var tilePosition = Ground.WorldToMap(position);
-    var tileId = Ground.GetCellv(tilePosition);
-    var tileName = Ground.TileSet.TileGetName(tileId);
-    GD.Print(tileName);
   }
 }
 

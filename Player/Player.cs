@@ -45,7 +45,9 @@ public class Player : Character
   {
     if (area.IsInGroup("enemies"))
     {
-      GD.Print("Enemy");
+      var enemy = area as Character;
+      enemy.TakeDamage(Damage);
+      TakeDamage(enemy.Damage);
     }
 
     if (area.Name == "Exit")
@@ -66,4 +68,10 @@ public class Player : Character
 
   private int Keys { get; set; }
   private bool HasKey => Keys > 0;
+
+  protected override void Die()
+  {
+    base.Die();
+    EmitSignal(nameof(Dead));
+  }
 }

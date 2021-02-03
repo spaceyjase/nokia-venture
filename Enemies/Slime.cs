@@ -10,15 +10,7 @@ public class Slime : Character
     base._Ready();
 
     facing = moves.Keys.ToArray()[GD.Randi() % moves.Keys.Count];
-
-    //var players = GetTree().GetNodesInGroup("player"); // TODO: magic string
-    //(players[0] as Player).Connect(nameof(Player.Moved), this, nameof(_on_Player_Moved));
-    
-    await ToSignal(GetTree().CreateTimer(0.5f), nameof(Timeout));
-  }
-
-  private void Timeout()
-  {
+    await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
     canMove = true;
   }
 
@@ -33,12 +25,4 @@ public class Slime : Character
       facing = moves.Keys.ToArray()[GD.Randi() % moves.Keys.Count];
     }
   }
-
-  // public void _on_Player_Moved()
-  // {
-  //   if (Move(facing) || GD.Randi() % 10 > 5)
-  //   {
-  //     facing = moves.Keys.ToArray()[GD.Randi() % moves.Keys.Count];
-  //   }
-  // }
 }

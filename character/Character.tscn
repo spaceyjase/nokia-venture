@@ -18,6 +18,8 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="DeathTween" type="Tween" parent="."]
+
 [node name="MoveTween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -37,4 +39,5 @@ cast_to = Vector2( 0, 8 )
 [node name="RayCastUp" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, -8 )
+[connection signal="tween_completed" from="DeathTween" to="." method="_on_DeathTween_tween_completed"]
 [connection signal="tween_completed" from="MoveTween" to="." method="_on_MoveTween_tween_completed"]
