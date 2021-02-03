@@ -11,11 +11,11 @@ public class Character : Area2D
   protected bool canMove = true;
   protected Facing facing = Facing.Right;
 
-  private AnimationPlayer AnimationPlayer => GetNode<AnimationPlayer>("AnimationPlayer");
+  protected AnimationPlayer AnimationPlayer => GetNode<AnimationPlayer>("AnimationPlayer");
   private Tween MoveTween => GetNode<Tween>("MoveTween");
   private Tween DeathTween => GetNode<Tween>("DeathTween");
   private Sprite Sprite => GetNode<Sprite>("Sprite");
-  private CollisionShape2D CollisionShape2D => GetNode<CollisionShape2D>("CollisionShape2D");
+  protected CollisionShape2D CollisionShape2D => GetNode<CollisionShape2D>("CollisionShape2D");
 
   protected readonly Dictionary<Facing, Vector2> moves = new Dictionary<Facing,Vector2>
   {

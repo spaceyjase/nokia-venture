@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 public class Player : Character
@@ -48,7 +49,7 @@ public class Player : Character
   }
 
   // ReSharper disable once UnusedMember.Local
-  private void _on_Player_area_entered(Area2D area)
+  private async void _on_Player_area_entered(Area2D area)
   {
     if (area.IsInGroup("enemies"))
     {
@@ -60,7 +61,9 @@ public class Player : Character
 
     if (area.Name == "Exit")
     {
-      // TODO: wait a sec before emitting signal to allow transition (tween?)
+      CollisionShape2D.Disabled = true;
+      AnimationPlayer.Play("exit");
+      await ToSignal(AnimationPlayer, "animation_finished");
       EmitSignal(nameof(Win));
     }
 

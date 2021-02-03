@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/BitsyDungeonTilesstatic1.1__by_enui.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.5, 3.5 )
+extents = Vector2( 2, 2 )
 
 [node name="Exit" type="Area2D"]
 input_pickable = false
