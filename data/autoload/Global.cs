@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 public class Global : Node
 {
@@ -14,7 +16,15 @@ public class Global : Node
     Instance = this;
   }
 
+  private static readonly List<string> levels = new List<string>
+  {
+    "res://levels/Level1.tscn",
+    "res://levels/Level2.tscn",
+  };
+  
   private static int keys;
+  private static int currentLevel;
+
   public static int Keys
   {
     get => keys;
@@ -23,5 +33,32 @@ public class Global : Node
       keys = value;
       Instance.EmitSignal(nameof(KeysChanged));
     }
+  }
+
+  public static void NewGame()
+  {
+    keys = 0;
+    currentLevel = -1;
+    
+    NextLevel();
+  }
+
+  public static void NextLevel()
+  {
+    currentLevel++;
+    if (currentLevel >= levels.Count)
+    {
+      // Won!?
+      GD.Print("You won!");
+    }
+    else
+    {
+      Instance.GetTree().ChangeScene(levels[currentLevel]);
+    }
+  }
+
+  public static void GameOver()
+  {
+    GD.Print("Game Over!");
   }
 }

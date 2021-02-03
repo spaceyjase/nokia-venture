@@ -96,11 +96,12 @@ public class Map : Node2D
 
   private void OnGameOver()
   {
+    Global.GameOver();
   }
   
   private void OnPlayerWin()
   {
-    GD.Print("Play has reached the exit!");
+    Global.NextLevel();
   }
 }
 
