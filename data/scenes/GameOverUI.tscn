@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://data/scenes/Game.gd" type="Script" id=1]
+[ext_resource path="res://assets/EffortsPro.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://data/fonts/FFFFORWA.TTF"
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = SubResource( 1 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="UI" type="Control" parent="."]
+margin_right = 84.0
+margin_bottom = 48.0
+theme = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -13.0
+custom_fonts/font = SubResource( 4 )
+text = "[5] Restart"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -19.0
+margin_right = 30.0
+margin_bottom = 12.0
+bbcode_enabled = true
+bbcode_text = "
+ [wave amp=30 freq=5]Game Over[/wave]"
+text = "
+ Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}

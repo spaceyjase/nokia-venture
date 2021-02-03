@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Godot;
 
 public class Player : Character
@@ -40,7 +39,7 @@ public class Player : Character
         var tileName = tileMap.TileSet.TileGetName(tileId);
         
         if (tileName != "gate") continue;
-        if (!HasKey) continue;
+        if (!Global.HasKey) continue;
 
         Global.Keys--;
         tileMap.SetCellv(tilePosition, -1);
@@ -57,6 +56,13 @@ public class Player : Character
       enemy.TakeDamage(Damage);
       TakeDamage(enemy.Damage);
       Global.Life = health;
+      if (Global.Life <= 0)
+      {
+        CollisionShape2D.Disabled = true;
+        AnimationPlayer.Play("death");
+        await ToSignal(AnimationPlayer, "animation_finished");
+        EmitSignal(nameof(Dead));
+      }
     }
 
     if (area.Name == "Exit")
@@ -77,8 +83,6 @@ public class Player : Character
     }
     // TODO: implementation for other pickups
   }
-
-  private bool HasKey => Global.Keys > 0;
 
   protected override void Die()
   {

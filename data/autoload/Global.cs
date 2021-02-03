@@ -35,6 +35,8 @@ public class Global : Node
       Instance.EmitSignal(nameof(KeysChanged));
     }
   }
+
+  public static bool HasKey => Keys > 0;
   
   public static int Life
   {
@@ -71,6 +73,6 @@ public class Global : Node
 
   public static void GameOver()
   {
-    GD.Print("Game Over!");
+    Instance.GetTree().ChangeScene("res://data/scenes/GameOver.tscn");
   }
 }
