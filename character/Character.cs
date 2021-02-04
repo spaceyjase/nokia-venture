@@ -8,7 +8,7 @@ public class Character : Area2D
   [Export] private int speed = 1;
 
   public int TileSize { get; set; } = 8;
-  protected bool canMove = true;
+  protected bool canMove;
   protected Facing facing = Facing.Right;
 
   protected AnimationPlayer AnimationPlayer => GetNode<AnimationPlayer>("AnimationPlayer");
@@ -40,10 +40,10 @@ public class Character : Area2D
     };
     
     DeathTween.InterpolateProperty(Sprite, "scale", new Vector2(1, 1),
-      new Vector2(3, 3), 0.5f, Tween.TransitionType.Quad, Tween.EaseType.InOut);
+      new Vector2(3, 3), 0.5f, Tween.TransitionType.Quad);
     DeathTween.InterpolateProperty(Sprite, "modulate",
       new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), 0.5f,
-      Tween.TransitionType.Quad, Tween.EaseType.InOut);
+      Tween.TransitionType.Quad);
   }
 
   protected bool Move(Facing direction)

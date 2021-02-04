@@ -45,6 +45,7 @@ public class Map : Node2D
       { "stairs_two", nameof(Pickup) },
       { "key", nameof(Pickup) },
       { "chest", nameof(Pickup) },
+      { "flask", nameof(Pickup) },
     };
     
     foreach (Vector2 cell in Items.GetUsedCells())

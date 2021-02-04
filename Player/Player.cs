@@ -11,6 +11,8 @@ public class Player : Character
     base._Ready();
 
     health = Global.Life;
+
+    canMove = true;
   }
 
   public override void _Process(float delta)
@@ -76,11 +78,19 @@ public class Player : Character
     if (!(area is Pickup pickup)) return;
 
     pickup.DoPickup();
-    GD.Print($"Pickup up {pickup.Type}!"); // TODO: revisit
-    if (pickup.Type == "key")
+    switch (pickup.Type)
     {
-      Global.Keys++;
+      case "key":
+        Global.Keys++;
+        break;
+      case "potion":
+        Global.Life += 5;
+        break;
+      case "flask":
+        Global.Life++;
+        break;
     }
+
     // TODO: implementation for other pickups
   }
 

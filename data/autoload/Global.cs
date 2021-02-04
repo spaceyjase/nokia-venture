@@ -10,6 +10,8 @@ public class Global : Node
   
   public static Global Instance { get; private set; }
 
+  private const int maxLife = 10;
+
   public override void _Ready()
   {
     base._Ready();
@@ -44,6 +46,8 @@ public class Global : Node
     set
     {
       life = value;
+      if (life > maxLife) life = maxLife;
+      if (life < 0) life = 0;
       Instance.EmitSignal(nameof(LifeChanged));
     }
   }
@@ -52,7 +56,7 @@ public class Global : Node
   {
     keys = 0;
     currentLevel = -1;
-    life = 10;  // TODO: game stats/config
+    life = maxLife;  // TODO: game stats/config
     
     NextLevel();
   }

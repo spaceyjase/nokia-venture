@@ -4,10 +4,13 @@ using Godot.Collections;
 
 public class Pickup : Area2D
 {
+  // TODO: revisit pickup names/types - enum
   private readonly Dictionary<string, int> textureIndex = new Dictionary<string, int>
   {
     { "key", 0 },
-    { "chest", 1 }
+    { "chest", 1 },
+    { "flask", 3 },
+    { "potion", 4 }
   };
 
   private Tween Tween => GetNode<Tween>("Tween");

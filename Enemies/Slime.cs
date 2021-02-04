@@ -10,7 +10,7 @@ public class Slime : Character
     base._Ready();
 
     facing = moves.Keys.ToArray()[GD.Randi() % moves.Keys.Count];
-    await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+    await ToSignal(GetTree().CreateTimer(1f), "timeout");
     canMove = true;
   }
 
