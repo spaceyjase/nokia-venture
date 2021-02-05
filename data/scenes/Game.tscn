@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/EffortsPro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/wall-torch-w-2.png" type="Texture" id=2]
+[ext_resource path="res://assets/wall-torch-w.png" type="Texture" id=3]
 [ext_resource path="res://data/scenes/Game.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFontData" id=1]
@@ -16,6 +18,14 @@ default_font = SubResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 1 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
 
 [node name="Node" type="Node"]
 script = ExtResource( 4 )
@@ -81,3 +91,19 @@ text = "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WallTorch" type="AnimatedSprite" parent="UI"]
+position = Vector2( 11, 15 )
+scale = Vector2( 2.44935, 2.3007 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="WallTorch2" type="AnimatedSprite" parent="UI"]
+position = Vector2( 73, 15 )
+scale = Vector2( 2.44935, 2.3007 )
+frames = SubResource( 5 )
+frame = 1
+speed_scale = 1.1
+playing = true
+flip_h = true
