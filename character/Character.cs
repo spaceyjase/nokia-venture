@@ -11,6 +11,7 @@ public class Character : Area2D
   protected bool canMove;
   protected Facing facing = Facing.Right;
 
+  protected Map Map => GetParent<Map>();
   protected AnimationPlayer AnimationPlayer => GetNode<AnimationPlayer>("AnimationPlayer");
   private Tween MoveTween => GetNode<Tween>("MoveTween");
   private Tween DeathTween => GetNode<Tween>("DeathTween");

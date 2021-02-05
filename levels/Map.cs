@@ -10,7 +10,9 @@ public class Map : Node2D
   private HUD HUD => GetNode<HUD>("HUD");
 
   private readonly List<object> gates = new List<object>();
-  
+
+  public Vector2 PlayerPosition { get; private set; } = Vector2.Zero;
+
   public override void _Ready()
   {
     base._Ready();
@@ -28,6 +30,7 @@ public class Map : Node2D
     
     Player.Connect(nameof(Player.Dead), this, nameof(OnGameOver));
     Player.Connect(nameof(Player.Win), this, nameof(OnPlayerWin));
+    Player.Connect(nameof(Player.Moved), this, nameof(OnPlayerMoved));
     Global.Instance.Connect(nameof(Global.LifeChanged), HUD, nameof(HUD.UpdateHealth));
     Global.Instance.Connect(nameof(Global.KeysChanged), HUD, nameof(HUD.UpdateKeys));
     
@@ -43,6 +46,8 @@ public class Map : Node2D
       { nameof(Player), nameof(Player) },
       { nameof(Slime), "Enemy" },
       { nameof(Bat), "Enemy" },
+      { nameof(Zombie), "Enemy" },
+      { nameof(Wolf), "Enemy" },
       { "stairs_two", nameof(Pickup) },
       { "key", nameof(Pickup) },
       { "chest", nameof(Pickup) },
@@ -93,6 +98,11 @@ public class Map : Node2D
   private void OnPlayerWin()
   {
     Global.NextLevel();
+  }
+
+  private void OnPlayerMoved()
+  {
+    PlayerPosition = Player.Position;
   }
 }
 
