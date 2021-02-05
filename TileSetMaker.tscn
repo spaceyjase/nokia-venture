@@ -263,3 +263,9 @@ position = Vector2( 0, 32 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 32, 8, 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="skulls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="skulls/StaticBody2D"]
+position = Vector2( 4, 4 )
+polygon = PoolVector2Array( -8, -8, 0, -8, 0, 0, -8, 0 )
