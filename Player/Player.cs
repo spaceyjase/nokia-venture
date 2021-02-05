@@ -67,7 +67,7 @@ public class Player : Character
       }
     }
 
-    if (area.Name == "Exit")
+    if (area.Name.Contains("Exit"))
     {
       CollisionShape2D.Disabled = true;
       AnimationPlayer.Play("exit");

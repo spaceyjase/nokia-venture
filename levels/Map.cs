@@ -42,10 +42,12 @@ public class Map : Node2D
     {
       { nameof(Player), nameof(Player) },
       { nameof(Slime), "Enemy" },
+      { nameof(Bat), "Enemy" },
       { "stairs_two", nameof(Pickup) },
       { "key", nameof(Pickup) },
       { "chest", nameof(Pickup) },
       { "flask", nameof(Pickup) },
+      { "potion", nameof(Pickup) },
     };
     
     foreach (Vector2 cell in Items.GetUsedCells())
