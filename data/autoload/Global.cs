@@ -66,15 +66,7 @@ public class Global : Node
   public static void NextLevel()
   {
     currentLevel++;
-    if (currentLevel >= levels.Count)
-    {
-      // Won!?
-      GD.Print("You won!");
-    }
-    else
-    {
-      Instance.GetTree().ChangeScene(levels[currentLevel]);
-    }
+    Instance.GetTree().ChangeScene(currentLevel >= levels.Count ? "res://data/scenes/Win.tscn" : levels[currentLevel]);
   }
 
   public static void GameOver()

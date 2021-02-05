@@ -43,7 +43,7 @@ public class Character : Area2D
     DeathTween.InterpolateProperty(Sprite, "scale", new Vector2(1, 1),
       new Vector2(3, 3), 0.5f, Tween.TransitionType.Quad);
     DeathTween.InterpolateProperty(Sprite, "modulate",
-      new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), 0.5f,
+      new Color(1, 1, 1), new Color(1, 1, 1, 0), 0.5f,
       Tween.TransitionType.Quad);
   }
 

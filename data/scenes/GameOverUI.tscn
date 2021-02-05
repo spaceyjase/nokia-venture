@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://data/scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/EffortsPro.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/skull.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -56,7 +57,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -30.0
-margin_top = -19.0
+margin_top = -14.0
 margin_right = 30.0
 margin_bottom = 12.0
 bbcode_enabled = true
@@ -64,6 +65,19 @@ bbcode_text = "
  [wave amp=30 freq=5]Game Over[/wave]"
 text = "
  Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -7.5
+margin_top = 1.0
+margin_right = 7.5
+margin_bottom = 17.0
+texture = ExtResource( 3 )
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
