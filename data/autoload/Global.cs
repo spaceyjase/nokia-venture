@@ -24,6 +24,7 @@ public class Global : Node
     "res://levels/Level2.tscn",
     "res://levels/Level3.tscn",
     "res://levels/Level4.tscn",
+    "res://levels/Level5.tscn",
   };
   
   private static int keys;
