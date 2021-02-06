@@ -6,13 +6,29 @@ public class Player : Character
   [Signal] public delegate void Win();
   [Signal] public delegate void Moved();
 
+  private AudioStream walkSfx;
+  private AudioStream pickupKeySfx;
+  private AudioStream pickupHealthSfx;
+  private AudioStream hitSfx;
+  private AudioStream deadSfx;
+  private AudioStream unlockSfx;
+  private AudioStream exitSfx;
+  private Node audioManager;
+
   public override void _Ready()
   {
     base._Ready();
 
     health = Global.Life;
-
     canMove = true;
+    walkSfx = ResourceLoader.Load<AudioStream>("res://data/sfx/blip14.wav");
+    pickupKeySfx = ResourceLoader.Load<AudioStream>("res://data/sfx/good1.wav");
+    pickupHealthSfx = ResourceLoader.Load<AudioStream>("res://data/sfx/good3.wav");
+    hitSfx = ResourceLoader.Load<AudioStream>("res://data/sfx/hit2.wav");
+    deadSfx = ResourceLoader.Load<AudioStream>("res://data/sfx/negative1.wav");
+    unlockSfx = ResourceLoader.Load<AudioStream>("res://data/sfx/blip11.wav");
+    exitSfx = ResourceLoader.Load<AudioStream>("res://data/sfx/blip6.wav");
+    audioManager = GetNode("/root/AudioManager");
   }
 
   public override void _Process(float delta)
@@ -27,6 +43,7 @@ public class Player : Character
       
       if (Move(direction))
       {
+        audioManager.Call("play_sfx", walkSfx);
         EmitSignal(nameof(Moved));
       }
       else if (raycasts[direction].IsColliding())
@@ -45,6 +62,7 @@ public class Player : Character
 
         Global.Keys--;
         tileMap.SetCellv(tilePosition, -1);
+        audioManager.Call("play_sfx", unlockSfx);
       }
     }
   }
@@ -54,6 +72,7 @@ public class Player : Character
   {
     if (area.IsInGroup("enemies"))
     {
+      audioManager.Call("play_sfx", hitSfx);
       var enemy = area as Character;
       enemy.TakeDamage(Damage);
       TakeDamage(enemy.Damage);
@@ -61,6 +80,7 @@ public class Player : Character
       if (Global.Life <= 0)
       {
         CollisionShape2D.Disabled = true;
+        audioManager.Call("play_sfx", deadSfx);
         AnimationPlayer.Play("death");
         await ToSignal(AnimationPlayer, "animation_finished");
         EmitSignal(nameof(Dead));
@@ -69,6 +89,7 @@ public class Player : Character
 
     if (area.Name.Contains("Exit"))
     {
+      audioManager.Call("play_sfx", exitSfx);
       CollisionShape2D.Disabled = true;
       AnimationPlayer.Play("exit");
       await ToSignal(AnimationPlayer, "animation_finished");
@@ -81,12 +102,15 @@ public class Player : Character
     switch (pickup.Type)
     {
       case "key":
+        audioManager.Call("play_sfx", pickupKeySfx);
         Global.Keys++;
         break;
       case "potion":
+        audioManager.Call("play_sfx", pickupHealthSfx);
         Global.Life += 5;
         break;
       case "flask":
+        audioManager.Call("play_sfx", pickupHealthSfx);
         Global.Life++;
         break;
     }
