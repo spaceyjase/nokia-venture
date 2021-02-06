@@ -1,6 +1,6 @@
 extends Node
 
-var music:AudioStream = preload("res://data/music/tune.wav")
+var music:AudioStream = preload("res://data/music/bad_melody.wav")
 
 func _ready() -> void:
   AudioManager.play_music(music)
