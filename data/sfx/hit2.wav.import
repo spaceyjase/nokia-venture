@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hit2.wav-9a2d42e9b817f3ed0949f1a321ad5f6e.sample"
+
+[deps]
+
+source_file="res://data/sfx/hit2.wav"
+dest_files=[ "res://.import/hit2.wav-9a2d42e9b817f3ed0949f1a321ad5f6e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
