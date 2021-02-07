@@ -89,11 +89,7 @@ public class Player : Character
 
     if (area.Name.Contains("Exit"))
     {
-      audioManager.Call("play_sfx", exitSfx);
-      CollisionShape2D.Disabled = true;
-      AnimationPlayer.Play("exit");
-      await ToSignal(AnimationPlayer, "animation_finished");
-      EmitSignal(nameof(Win));
+      DoWin(true);
     }
 
     if (!(area is Pickup pickup)) return;
@@ -113,9 +109,24 @@ public class Player : Character
         audioManager.Call("play_sfx", pickupHealthSfx);
         Global.Life++;
         break;
+      case "chest":
+        DoWin(false);
+        break;
     }
 
     // TODO: implementation for other pickups
+  }
+
+  private async void DoWin(bool exit)
+  {
+      audioManager.Call("play_sfx", exitSfx);
+      CollisionShape2D.Disabled = true;
+      if (exit)
+      {
+        AnimationPlayer.Play("exit");
+        await ToSignal(AnimationPlayer, "animation_finished");
+      }
+      EmitSignal(nameof(Win));
   }
 
   protected override void Die()
