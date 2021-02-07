@@ -48,6 +48,7 @@ public class Map : Node2D
       { nameof(Bat), "Enemy" },
       { nameof(Zombie), "Enemy" },
       { nameof(Wolf), "Enemy" },
+      { nameof(Knight), "Enemy" },
       { "stairs_two", nameof(Pickup) },
       { "key", nameof(Pickup) },
       { "chest", nameof(Pickup) },
