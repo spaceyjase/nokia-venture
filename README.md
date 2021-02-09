@@ -1,10 +1,15 @@
-# nokia3310-jam-godot-starter
-A Godot starter project for the nokia3310 game jam
+# Nokia 'venture
 
-Use this project to get a kick start for the Nokia 3310 Jam on itch.io!
-[Link to the Jam](https://itch.io/jam/nokiajam2)
+![Cover](/cover.png)
 
+Can you find the treasure in this short 'venture into the Nokia dungeon?
 
-Everything inside the Game.tscn scene will be rendered with two colors from the official palette while also applying an ordered dithering shader.  
+![Screen](/screenshots/screen2.png)
+![Screen](/screenshots/screen3.png)
+![Screen](/screenshots/screen4.png)
 
-![Example screen](/example.png)
+Play here: https://jason-indie.itch.io/nokiaventure
+
+A submission to the Nokia Jam 3:
+[Link to the Jam](https://itch.io/jam/nokiajam3)
+
