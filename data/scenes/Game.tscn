@@ -96,13 +96,13 @@ __meta__ = {
 position = Vector2( 11, 15 )
 scale = Vector2( 2.44935, 2.3007 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="WallTorch2" type="AnimatedSprite" parent="UI"]
 position = Vector2( 73, 15 )
 scale = Vector2( 2.44935, 2.3007 )
 frames = SubResource( 5 )
+frame = 1
 speed_scale = 1.1
 playing = true
 flip_h = true

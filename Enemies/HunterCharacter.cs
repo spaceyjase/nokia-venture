@@ -12,10 +12,8 @@ public class HunterCharacter : Character
     canMove = true;
   }
   
-  public override void _Process(float delta)
+  public override void OnPlayerMoved()
   {
-    base._Process(delta);
-    
     if (!canMove) return;
 
     if (Mathf.Abs(Map.PlayerPosition.x - Position.x) < float.Epsilon)

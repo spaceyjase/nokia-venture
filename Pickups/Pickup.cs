@@ -39,8 +39,13 @@ public class Pickup : Area2D
 
   public void DoPickup()
   {
-    CollisionShape2D.Disabled = true;
+    CallDeferred(nameof(DisableCollisionshape));
     Tween.Start();
+  }
+
+  public void DisableCollisionshape()
+  {
+    CollisionShape2D.Disabled = true;
   }
 
   public void _on_Tween_tween_completed(object o, NodePath key)

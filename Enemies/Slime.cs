@@ -14,10 +14,8 @@ public class Slime : Character
     canMove = true;
   }
 
-  public override void _Process(float delta)
+  public override void OnPlayerMoved()
   {
-    base._Process(delta);
-    
     if (!canMove) return;
     
     if (Move(facing) || GD.Randi() % 10 > 5)

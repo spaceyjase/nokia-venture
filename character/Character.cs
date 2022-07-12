@@ -7,6 +7,11 @@ public class Character : Area2D
   [Export] protected int health = 1;
   [Export] private int speed = 1;
 
+  public virtual void OnPlayerMoved()
+  {
+    throw new System.NotImplementedException();
+  }
+
   public int TileSize { get; set; } = 8;
   protected bool canMove;
   protected Facing facing = Facing.Right;

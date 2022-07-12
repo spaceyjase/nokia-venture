@@ -80,11 +80,11 @@ public class Map : Node2D
         case "Enemy": // TODO: game constants
           // TODO: global/singleton factory method
           var enemy = ResourceLoader.Load<PackedScene>($"res://Enemies/{cellType}.tscn");
-          if (enemy != null)
+          if (enemy?.Instance() is Character c)
           {
-            var c = enemy.Instance() as Character;
             c.Position = position;
             c.TileSize = (int)Items.CellSize.x;
+            Player.Connect(nameof(Player.Moved), c, nameof(OnPlayerMoved));
             AddChild(c);
           }
           break;

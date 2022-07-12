@@ -120,13 +120,18 @@ public class Player : Character
   private async void DoWin(bool exit)
   {
       audioManager.Call("play_sfx", exitSfx);
-      CollisionShape2D.Disabled = true;
+      CallDeferred(nameof(DisableCollisionshape));
       if (exit)
       {
         AnimationPlayer.Play("exit");
         await ToSignal(AnimationPlayer, "animation_finished");
       }
       EmitSignal(nameof(Win));
+  }
+  
+  public void DisableCollisionshape()
+  {
+    CollisionShape2D.Disabled = true;
   }
 
   protected override void Die()

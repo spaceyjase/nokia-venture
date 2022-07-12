@@ -30,9 +30,7 @@ tile_data = PoolIntArray( 9, 22, 0, 131073, 28, 0, 131080, 35, 0, 262153, 25, 0 
 [node name="Exit" parent="." instance=ExtResource( 2 )]
 position = Vector2( 92, 4 )
 
-[node name="Player" parent="." groups=[
-"player",
-] instance=ExtResource( 3 )]
+[node name="Player" parent="." groups=["player"] instance=ExtResource( 3 )]
 z_index = 0
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
